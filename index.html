@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário Construtax — Diagnóstico Rápido · Reforma Tributária</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════════ LOADER ═══════════════ -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <img id="loaderLogo" src="assets/logo-light.png" alt="Construtax" class="loader-logo">
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ APP ═══════════════ -->
+  <div id="app" style="opacity:0">
+
+    <div class="wrap">
+
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="logo-wrap">
+          <img id="siteLogo" src="assets/logo-light.png" alt="Construtax">
+        </div>
+        <div class="topbar-right">
+          <span class="eyebrow">CONSTRUSUMMIT 2026 · Diagnóstico</span>
+          <button class="theme-toggle" id="themeToggle" aria-label="Alternar modo escuro" title="Alternar tema">
+            <span class="theme-icon theme-icon--sun">☀️</span>
+            <span class="theme-icon theme-icon--moon">🌙</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <div class="ruler" id="ruler"></div>
+      <div class="step-caption" id="stepCaption">Bloco 1 de 7</div>
+
+      <!-- FORM -->
+      <form id="diagForm" novalidate>
+        <div class="card" id="cardArea">
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div id="cardContent"></div>
+          <div class="nav-row">
+            <button type="button" class="btn btn-ghost invisible" id="btnBack">← Voltar</button>
+            <button type="button" class="btn btn-primary" id="btnNext">Avançar →</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- DONE SCREEN -->
+      <div class="card" id="doneCard" style="display:none;">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="done-screen">
+          <div class="check">✓</div>
+          <h2>Diagnóstico enviado!</h2>
+          <p>Obrigado por participar. Em poucos instantes você recebe no seu e-mail o ebook <strong>"O Tributo Mudou. Seu Contrato Também Precisa Mudar"</strong> e o material complementar da Construtax.</p>
+        </div>
+      </div>
+
+    </div><!-- /wrap -->
+  </div><!-- /app -->
+
+  <script src="main.js"></script>
+</body>
+</html>
