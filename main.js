@@ -4,8 +4,7 @@
 
 /* ═══════════  CONFIG  ═══════════ */
 // Cole aqui a URL do Webhook do Make (Webhooks > Custom Webhook).
-const WEBHOOK_URL = "COLOQUE_AQUI_A_URL_DO_WEBHOOK_DO_MAKE";
-
+const WEBHOOK_URL = "https://hook.us2.make.com/x08suc5pv8212ds97ph9wmlesa8evero";
 /* ═══════════  LOGOS  ═══════════ */
 const LOGO_LIGHT = "assets/logo-light.png"; // grafite — fundo claro
 const LOGO_DARK  = "assets/logo-dark.png";  // branco  — fundo escuro
