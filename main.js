@@ -252,7 +252,6 @@ function renderQuestion(q) {
       break;
     }
     case "scale": {
-      inner += `<div class="scale-ends-top"><span>${escapeHtml(q.scaleLabels[0])}</span><span>${escapeHtml(q.scaleLabels[4])}</span></div>`;
       inner += `<div class="scale-row" data-qid="${escapeAttr(q.id)}">`;
       for (let i = 1; i <= 5; i++) {
         const checked = answers[q.id] === String(i);
@@ -261,7 +260,7 @@ function renderQuestion(q) {
       inner += `</div>`;
       const captionVal = answers[q.id]
         ? escapeHtml(q.scaleLabels[parseInt(answers[q.id]) - 1])
-        : "Selecione um número acima";
+        : "";
       inner += `<div class="scale-caption${answers[q.id] ? "" : " scale-caption--hint"}" data-caption-for="${escapeAttr(q.id)}">${captionVal}</div>`;
       break;
     }
