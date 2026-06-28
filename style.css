@@ -17,12 +17,10 @@
   --line-subtle: #e8e5df;
   --error: #b3432f;
 
-  /* dot grid background */
   --bg-dot-color: rgba(0,0,0,0.10);
   --bg-dot-size: 1.5px;
   --bg-dot-gap: 24px;
 
-  /* loader */
   --loader-bg: #f5f4ef;
 }
 
@@ -55,7 +53,6 @@ html, body { margin: 0; padding: 0; }
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--paper);
-  /* refined dot grid — clean, not distracting */
   background-image: radial-gradient(circle, var(--bg-dot-color) var(--bg-dot-size), transparent var(--bg-dot-size));
   background-size: var(--bg-dot-gap) var(--bg-dot-gap);
   background-position: center center;
@@ -188,7 +185,6 @@ body {
 }
 .theme-toggle:active { transform: scale(0.95); }
 
-/* show correct icon per theme */
 [data-theme="light"] .theme-icon--sun  { display: none; }
 [data-theme="light"] .theme-icon--moon { display: block; }
 [data-theme="dark"]  .theme-icon--sun  { display: block; }
@@ -225,14 +221,12 @@ body {
   border-radius: 6px;
   padding: 36px 32px 28px;
   transition: background 0.3s, border-color 0.3s;
-  /* subtle shadow instead of dashed border */
   box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
 }
 [data-theme="dark"] .card {
   box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 4px 20px rgba(0,0,0,0.3);
 }
 
-/* corner brackets */
 .corner {
   position: absolute;
   width: 14px;
@@ -351,6 +345,13 @@ input.err, textarea.err { border-color: var(--error); }
 .other-input.show { display: block; }
 
 /* ═══════════ SCALE ═══════════ */
+.scale-ends-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
 .scale-row { display: flex; gap: 8px; margin-bottom: 8px; }
 .scale-btn {
   flex: 1;
@@ -376,16 +377,15 @@ input.err, textarea.err { border-color: var(--error); }
 .scale-caption {
   font-size: 12px;
   color: var(--green-dark);
-  min-height: 18px;
   font-weight: 600;
-  margin-top: 4px;
-}
-.scale-ends {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--muted);
+  min-height: 18px;
   margin-top: 2px;
+  transition: opacity 0.2s;
+}
+.scale-caption--hint {
+  color: var(--muted);
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* ═══════════ CONSENT ═══════════ */
