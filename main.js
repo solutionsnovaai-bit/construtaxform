@@ -90,7 +90,7 @@ const STEPS = [
           "Compra e venda de unidades imobiliárias","Contratos de permuta","Contratos com investidores","Contratos de SPE",
           "Acordos de sócios","Contratos de administração ou gerenciamento de obra","Contratos de locação de equipamentos",
           "Contratos com corretores ou imobiliárias","Contratos de financiamento ou captação de investimentos","Não sei informar"] },
-      { id:"p9", label:"Como os contratos da empresa são normalmente elaborados ou revisados?", type:"radio", required:true,
+      { id:"p9", label:"Como os contratos da empresa são normalmente elaborados ou revisados?", type:"checkbox", required:true,
         options:["Usamos os mesmos modelos há muito tempo.","Usamos modelos de internet ou adaptados internamente",
           "Quando necessário o contador ou administrativo costuma auxiliar","Temos jurídico interno",
           "Contratamos apoio jurídico quando surge a necessidade.","Não sei informar"] },
@@ -128,7 +128,7 @@ const STEPS = [
           "Dúvidas sobre RET","Insegurança na precificação","Conflito com fornecedores","Conflito com clientes ou compradores",
           "Conflito entre sócios ou parceiros","Desinformação sobre créditos amplos","Não temos clareza sobre os riscos"] },
       { id:"p15", label:"Na sua percepção, quais áreas da empresa serão fortemente impactadas pela Reforma Tributária?",
-        type:"radio", required:true, other:true,
+        type:"checkbox", required:true, other:true,
         options:["Tributário / fiscal","Contratos","Financeiro / fluxo de caixa","Precificação","Compras e fornecedores","Vendas",
           "Incorporação / novos empreendimentos","Societário / SPEs / investidores","Gestão de obras","Todas as áreas acima","Ainda não sei avaliar"] },
       { id:"p16", label:"O quanto você concorda com esta afirmação: \u201cOs contratos da construção civil podem afetar diretamente a margem dos empreendimentos durante a Reforma Tributária.\u201d",
@@ -252,20 +252,17 @@ function renderQuestion(q) {
       break;
     }
     case "scale": {
+      inner += `<div class="scale-ends-top"><span>${escapeHtml(q.scaleLabels[0])}</span><span>${escapeHtml(q.scaleLabels[4])}</span></div>`;
       inner += `<div class="scale-row" data-qid="${escapeAttr(q.id)}">`;
       for (let i = 1; i <= 5; i++) {
         const checked = answers[q.id] === String(i);
         inner += `<div class="scale-btn${checked ? " checked" : ""}" data-qid="${escapeAttr(q.id)}" data-val="${i}">${i}</div>`;
       }
       inner += `</div>`;
-      inner += `<div class="scale-ends">
-        <span>${escapeHtml(q.scaleLabels[0])}</span>
-        <span>${escapeHtml(q.scaleLabels[4])}</span>
-      </div>`;
       const captionVal = answers[q.id]
         ? escapeHtml(q.scaleLabels[parseInt(answers[q.id]) - 1])
-        : "";
-      inner += `<div class="scale-caption" data-caption-for="${escapeAttr(q.id)}">${captionVal}</div>`;
+        : "Selecione um número acima";
+      inner += `<div class="scale-caption${answers[q.id] ? "" : " scale-caption--hint"}" data-caption-for="${escapeAttr(q.id)}">${captionVal}</div>`;
       break;
     }
     case "consent": {
@@ -355,8 +352,9 @@ function attachHandlers() {
       el.classList.add("checked");
       const q = findQuestion(qid);
       if (q) {
-        document.querySelector(`[data-caption-for="${CSS.escape(qid)}"]`).textContent =
-          q.scaleLabels[parseInt(val) - 1];
+        const caption = document.querySelector(`[data-caption-for="${CSS.escape(qid)}"]`);
+        caption.textContent = q.scaleLabels[parseInt(val) - 1];
+        caption.classList.remove("scale-caption--hint");
       }
       clearError(qid);
     });
